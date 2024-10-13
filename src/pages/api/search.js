@@ -8,7 +8,6 @@ export default async function handler(req, res) {
       {
         headers: {
           Accept: "application/json",
-          "User-Agent": "Your App Name (your@email.com)",
         },
       }
     );
