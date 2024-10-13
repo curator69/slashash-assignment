@@ -1,40 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dad Joke Favorites
 
-## Getting Started
+This is a Next.js application that allows users to search for dad jokes, view them as images, and save their favorites. It uses Tailwind CSS for styling and MySQL for storing favorite jokes.
 
-First, run the development server:
+## Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Before you begin, ensure you have met the following requirements:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- You have installed Node.js (version 14.0 or later)
+- You have a MySQL server running
+- You have created a MySQL database for this project
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Installing Dad Joke Favorites
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+To install Dad Joke Favorites, follow these steps:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```
+   git clone https://github.com/yourusername/dad-joke-favorites.git
+   cd dad-joke-favorites
+   ```
 
-## Learn More
+2. Install the dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+   ```
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Create a `.env.local` file in the root directory with the following content:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```
+   DB_HOST=localhost
+   DB_USER=your_mysql_username
+   DB_PASSWORD=your_mysql_password
+   DB_NAME=your_database_name
+   ```
 
-## Deploy on Vercel
+   Replace the values with your actual MySQL credentials.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Set up the database by running the following SQL command in your MySQL client:
+   ```sql
+   CREATE TABLE IF NOT EXISTS favorites (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     joke_id VARCHAR(255) NOT NULL,
+     joke_text TEXT NOT NULL,
+     image_url VARCHAR(255) NOT NULL,
+     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Using Dad Joke Favorites
+
+To use Dad Joke Favorites, follow these steps:
+
+1. Start the development server:
+
+   ```
+   npm run dev
+   ```
+
+2. Open your web browser and navigate to `http://localhost:3000`
+
+3. Use the search bar to find dad jokes
+4. Click the "Favorite" button to save jokes you like
+5. Navigate to the "Favorites" page to view your saved jokes
